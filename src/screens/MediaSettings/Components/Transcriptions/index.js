@@ -43,7 +43,9 @@ function TranscriptionsWithRedux({
           ?
           <ul>
             {captions.map(cap => (
-              <li>{cap.begin} : {cap.end} : {cap.text}</li>
+              <li key={'cap-' + cap.id}>
+                {cap.begin} : {cap.end} : {cap.text}
+              </li>
             ))}
           </ul>
           :
