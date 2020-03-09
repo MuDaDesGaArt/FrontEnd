@@ -3,14 +3,17 @@ import { Provider } from 'react-redux'
 import './index.scss'
 import {
   MSPHeader, 
-  EPub
+  EPub,
+  Transcriptions,
 } from './Components'
 import {
   mspStore, 
   connectWithRedux,
   setup, 
   epub,
+  transControl,
   TAB_EPUB,
+  TAB_EDIT_TRANS,
 } from './Utils'
 import { util } from '../../utils'
 
@@ -23,6 +26,7 @@ class MediaSettingsWithRedux extends React.Component {
     this.initTab = tab
     setup.init(props)
     epub.init(props)
+    transControl.init(props)
   }
 
   componentDidMount() {
@@ -38,8 +42,14 @@ class MediaSettingsWithRedux extends React.Component {
         <div className="msp-content">
           {
             tab === TAB_EPUB
-            &&
+            ?
             <EPub />
+            :
+            tab === TAB_EDIT_TRANS
+            ?
+            <Transcriptions />
+            :
+            null
           }
         </div>
       </div>
@@ -62,8 +72,13 @@ export function MediaSettings(props) {
     [
       'setMedia',
       'setTab',
+      // ePub
       'setEpubData',
-      'setIsSettingEpub'
+      'setIsSettingEpub',
+      // Trans
+      'setTranscriptions', 
+      'setCurrTrans', 
+      'setCaptions',
     ]
   )
 
