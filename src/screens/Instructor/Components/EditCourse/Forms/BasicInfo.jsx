@@ -46,6 +46,9 @@ function BasicInfoWithRedux({
     offControl.description(description)
   }
 
+  const setDomainWords = domainWords => {
+  }
+
   const setAccessType = accessType => {
     offControl.accessType(accessType)
     if (accessType === 2) {
@@ -153,6 +156,18 @@ function BasicInfoWithRedux({
               description="Turn it on if you would like to receive the statistics of students' perfermance in the future."
               defaultValue={defaultLogEventsFlag}
               onChange={setLogEventsFlag}
+            />
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            <CTForm textarea
+              label="Domain Words and Phrases"
+              color="grey"
+              placeholder="Identity matrix, eigenvalues, graph theory"
+              defaultValue=""
+              onChange={setDomainWords}
             />
           </Grid.Column>
         </Grid.Row>
